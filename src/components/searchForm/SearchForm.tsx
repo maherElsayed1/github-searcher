@@ -1,6 +1,6 @@
-import './Search.scss'
+import './SearchForm.scss'
 
-const Search: React.FC = () => {
+const SearchForm: React.FC = () => {
     return (
         <div>
             <h1>Search Component</h1>
@@ -8,4 +8,4 @@ const Search: React.FC = () => {
     )
 }
 
-export default Search
+export default SearchForm

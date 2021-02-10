@@ -1,9 +1,9 @@
-import Search from '../components/search/Search'
+import SearchForm from '../components/searchForm/SearchForm'
 
 const Home: React.FC = () => {
     return (
         <>
-            <Search />
+            <SearchForm />
         </>
     )
 }

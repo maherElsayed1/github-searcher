@@ -1,0 +1,48 @@
+.search-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form {
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        &-icon {
+            font-size: 50px;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 8px;
+        }
+        &-title {
+            font-size: 30px;
+            font-weight: 700;
+        }
+        &-description {
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    &__search-input,
+    &__search-term {
+        height: 45px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    &__search-input {
+        width: 350px;
+        max-width: 65%;
+        margin-right: 5px;
+    }
+
+    &__search-term {
+        width: 120px;
+        max-width: 35%;
+    }
+}

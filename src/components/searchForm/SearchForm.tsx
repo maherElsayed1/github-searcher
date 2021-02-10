@@ -38,15 +38,15 @@ const SearchForm: React.FC = () => {
                         <AiOutlineGithub />
                     </div>
                     <div className="search-form__header-content">
-                        <h1>Github Searcher</h1>
-                        <p>Search Users or repositories below</p>
+                        <h1 className="search-form__header-title">Github Searcher</h1>
+                        <p className="search-form__header-description">Search Users or repositories below</p>
                     </div>
                 </div>
 
                 <div className="search-form__content">
                     <form onSubmit={onSubmit}>
-                        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Start typing to search .." />
-                        <select onChange={(e) => setTerm(e.target.value)}>
+                        <input type="search" className="search-form__search-input" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Start typing to search .." />
+                        <select className="search-form__search-term" onChange={(e) => setTerm(e.target.value)}>
                             <option value="users">Users</option>
                             <option value="repositories">Repositories</option>
                             <option value="issues">Issues</option>

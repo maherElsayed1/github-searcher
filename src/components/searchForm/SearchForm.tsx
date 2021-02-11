@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useActions } from '../../hooks/useActions'
 
+// component
+import SearchResults from '../searchResults/SearchResults'
+
 // icons
 import { AiOutlineGithub } from 'react-icons/ai'
 
@@ -54,6 +57,8 @@ const SearchForm: React.FC = () => {
                     </form>
                 </div>
             </div>
+
+            <SearchResults query={query} term={term} loading={loading} data={data} error={error} />
         </div>
     )
 }

@@ -25,12 +25,11 @@ const SearchForm: React.FC = () => {
         const source = cancelToken.source()
         const cancel = source.token
 
-        console.log(term, query)
         if (query.length < 3) {
             return
         }
         searchGithub(term, query, cancel)
-        return () => source.cancel()
+        return () => source.cancel('Request canceled!')
     }, [term, query])
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {

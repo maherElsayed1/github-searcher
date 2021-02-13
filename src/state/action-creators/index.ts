@@ -19,7 +19,7 @@ export const searchGithub = (term: string, query: string, cancel: any) => {
             })
         } catch (err) {
             if (axios.isCancel(err)) {
-                console.log('Request canceled ', err.message)
+                console.log(err.message)
             } else {
                 dispatch({
                     type: ActionType.SEARCH_GITHUB_ERROR,

@@ -1,0 +1,18 @@
+.search-error {
+    min-height: calc(100vh - 210px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 105px;
+    color: #34495e;
+
+    &__icon {
+        font-size: 60px;
+    }
+
+    &__msg {
+        font-size: 22px;
+    }
+}

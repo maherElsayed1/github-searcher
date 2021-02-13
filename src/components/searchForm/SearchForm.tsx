@@ -6,6 +6,7 @@ import { useActions } from '../../hooks/useActions'
 // component
 import SearchResults from '../searchResults/SearchResults'
 import Loading from '../loading/Loading'
+import Error from '../error/Error'
 
 // icons
 import { AiOutlineGithub } from 'react-icons/ai'
@@ -41,7 +42,7 @@ const SearchForm: React.FC = () => {
 
     return (
         <div className="container search-page">
-            <div className={`search-form ${loading || query.length >= 3 ? 'align-start' : ''}`}>
+            <div className={`search-form ${loading || error || query.length >= 3 ? 'align-start' : ''}`}>
                 <div className="search-form__header">
                     <div className="search-form__header-icon">
                         <AiOutlineGithub />
@@ -66,6 +67,7 @@ const SearchForm: React.FC = () => {
 
             {loading && <Loading />}
             <SearchResults query={query} term={term} loading={loading} data={data} error={error} />
+            {error && <Error msg={error} />}
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useActions } from '../../hooks/useActions'
 
@@ -20,11 +21,16 @@ const SearchForm: React.FC = () => {
     const { data, error, loading } = useTypedSelector((state) => state.search)
 
     useEffect(() => {
+        const cancelToken = axios.CancelToken
+        const source = cancelToken.source()
+        const cancel = source.token
+
         console.log(term, query)
         if (query.length < 3) {
             return
         }
-        searchGithub(term, query)
+        searchGithub(term, query, cancel)
+        return () => source.cancel()
     }, [term, query])
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {

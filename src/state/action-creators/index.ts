@@ -11,6 +11,9 @@ export const searchGithub = (term: string, query: string, cancel: any) => {
 
         try {
             const { data } = await axios.get(`https://api.github.com/search/${term}?q=${query}`, {
+                headers: {
+                    Authorization: `token ${'0d5faea5e143d3fe830c28a8cf1430a9916c9629'}`,
+                },
                 cancelToken: cancel,
             })
             dispatch({

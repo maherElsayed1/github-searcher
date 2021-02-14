@@ -88,9 +88,11 @@ const SearchForm: React.FC = () => {
 
             {loading && <Loading />}
 
-            <InfiniteScroll dataLength={data.length} next={handleInfiniteScroll} hasMore={true} loader={null}>
-                <SearchResults query={query} term={term} loading={loading} data={data} error={error} />
-            </InfiniteScroll>
+            {!error && !loading && query.length >= 3 && (
+                <InfiniteScroll dataLength={data.length} next={handleInfiniteScroll} hasMore={true} loader={null}>
+                    <SearchResults term={term} data={data} />
+                </InfiniteScroll>
+            )}
 
             {error && <Error msg={error} />}
         </div>

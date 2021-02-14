@@ -11,6 +11,7 @@ import Error from '../error/Error'
 
 // icons
 import { AiOutlineGithub } from 'react-icons/ai'
+import { RiErrorWarningLine } from 'react-icons/ri'
 
 // styles
 import './SearchForm.scss'
@@ -88,13 +89,15 @@ const SearchForm: React.FC = () => {
 
             {loading && <Loading />}
 
-            {!error && !loading && query.length >= 3 && (
+            {!error && !loading && query.length >= 3 && data.length >= 1 && (
                 <InfiniteScroll dataLength={data.length} next={handleInfiniteScroll} hasMore={true} loader={null}>
                     <SearchResults term={term} data={data} />
                 </InfiniteScroll>
             )}
 
             {error && <Error msg={error} />}
+
+            {!error && !loading && query.length >= 3 && !data.length && <Error msg="Try to another search keyword!" />}
         </div>
     )
 }

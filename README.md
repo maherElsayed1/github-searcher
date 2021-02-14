@@ -51,3 +51,6 @@ there are some other available commands:
 - Search Issues
 - Infinite Scrolling
 - Cancelling unnecessary requests
+
+## Changelog
+[CHANGELOG](https://github.com/maherElsayed1/github-searcher/blob/main/CHANGELOG.md)

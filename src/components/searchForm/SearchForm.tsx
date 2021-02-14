@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useActions } from '../../hooks/useActions'
 
@@ -17,8 +18,9 @@ import './SearchForm.scss'
 const SearchForm: React.FC = () => {
     const [term, setTerm] = useState('users')
     const [query, setQuery] = useState('')
+    const [requestPage, setRequestPage] = useState(1)
 
-    const { searchGithub } = useActions()
+    const { searchGithub, searchGithubScroll } = useActions()
     const { data, error, loading } = useTypedSelector((state) => state.search)
 
     useEffect(() => {
@@ -29,15 +31,34 @@ const SearchForm: React.FC = () => {
         if (query.length < 3) {
             return
         }
-        searchGithub(term, query, cancel)
+        setRequestPage(1)
+        searchGithub(term, query, requestPage, cancel)
         return () => source.cancel('Request canceled!')
     }, [term, query])
+
+    useEffect(() => {
+        if (requestPage > 1) {
+            searchGithubScroll(term, query, requestPage)
+        }
+    }, [requestPage])
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (query.length < 3) {
             return alert('please enter at least 3 characters!')
         }
+    }
+
+    const handleInfiniteScroll = () => {
+        if (query.length < 3) {
+            return
+        }
+        setRequestPage(requestPage + 1)
+    }
+
+    const handleTermChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setTerm(e.target.value)
+        setRequestPage(1)
     }
 
     return (
@@ -56,7 +77,7 @@ const SearchForm: React.FC = () => {
                 <div className="search-form__content">
                     <form onSubmit={onSubmit}>
                         <input type="search" className="search-form__search-input" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Start typing to search .." />
-                        <select className="search-form__search-term" onChange={(e) => setTerm(e.target.value)}>
+                        <select className="search-form__search-term" onChange={handleTermChange}>
                             <option value="users">Users</option>
                             <option value="repositories">Repositories</option>
                             <option value="issues">Issues</option>
@@ -66,7 +87,11 @@ const SearchForm: React.FC = () => {
             </div>
 
             {loading && <Loading />}
-            <SearchResults query={query} term={term} loading={loading} data={data} error={error} />
+
+            <InfiniteScroll dataLength={data.length} next={handleInfiniteScroll} hasMore={true} loader={null}>
+                <SearchResults query={query} term={term} loading={loading} data={data} error={error} />
+            </InfiniteScroll>
+
             {error && <Error msg={error} />}
         </div>
     )

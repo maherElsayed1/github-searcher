@@ -11,7 +11,6 @@ import Error from '../error/Error'
 
 // icons
 import { AiOutlineGithub } from 'react-icons/ai'
-import { RiErrorWarningLine } from 'react-icons/ri'
 
 // styles
 import './SearchForm.scss'

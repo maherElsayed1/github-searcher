@@ -1,6 +1,6 @@
 
 # Github Searcher
-This is a simple search tool to that allows the users to search the users or repositories or issues on GitHub.
+This is a simple search tool that allows the users to search the users or repositories or issues on GitHub.
 
 ## Get Started
 to run the project you should follow the below steps:

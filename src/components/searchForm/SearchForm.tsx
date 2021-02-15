@@ -96,7 +96,7 @@ const SearchForm: React.FC = () => {
 
             {error && <Error msg={error} />}
 
-            {!error && !loading && query.length >= 3 && !data.length && <Error msg="Try to another search keyword!" />}
+            {!error && !loading && query.length >= 3 && !data.length && <Error msg="Try to enter another search keyword!" />}
         </div>
     )
 }

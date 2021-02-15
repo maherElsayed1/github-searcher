@@ -1,22 +1,27 @@
-
-# Github Searcher
-This is a simple search tool that allows the users to search the users or repositories or issues on GitHub.
-
 ## Get Started
+
 to run the project you should follow the below steps:
-* Install the dependencies by running the following command (be sure that you are in the root directory of the project)
-#### `yarn` or `npm install`
-* after installing the dependencies, you need to run the development server by running this command
-#### `yarn start` or `npm start`
+ 1. **Install dependencies**
+ run `yarn` or `npm install` in your terminal to install the dependencies (be sure that you are in the root directory of the project) 
+
+ 2. **Define environment variables**
+we have only one environment variable for the github access token which we use for authorization to increase the search  rate limit for github API
+please follow this [guide](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) to generate your access token
+after generating the access token, create a new file in your root directory and name it `.env` and inside it add the following code
+```
+REACT_APP_GITHUB_TOKEN =  'your generated access token'
+```
+  then replace **your generated access token** with the access token that you have generated from github.
+ **note:** please be sure to restart your development server whenever you make any changes to the environment variables
+
+ 3.  **Run development server**
+to run the development server run the following command in your terminal 
+`yarn start` or `npm start`
+
 there are some other available commands:
-
 *  `yarn test` or `npm test` to run tests (we don't have tests yet, but we will add it later)
-
 *  `yarn build` or `npm build` to build the app for the production
-
 *  `yarn eject` or `npm eject` you can read more about this command [here](https://create-react-app.dev/docs/available-scripts/#npm-run-eject)
-
-  
 
 ## Screenshots
 ![enter image description here](https://s2.gifyu.com/images/screenshot01.gif)

@@ -12,7 +12,8 @@ after generating the access token, create a new file in your root directory and 
 REACT_APP_GITHUB_TOKEN =  'your generated access token'
 ```
   then replace **your generated access token** with the access token that you have generated from github.
- **note:** please be sure to restart your development server whenever you make any changes to the environment variables
+ ##### note:
+ please be sure to restart your development server whenever you make any changes to the environment variables
 
  3.  **Run development server**
 to run the development server run the following command in your terminal 

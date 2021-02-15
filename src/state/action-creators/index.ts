@@ -3,7 +3,7 @@ import { Dispatch } from 'redux'
 import { ActionType } from '../action-types'
 import { Action } from '../actions'
 
-const githubToken = '0d5faea5e143d3fe830c28a8cf1430a9916c9629'
+const { REACT_APP_GITHUB_TOKEN } = process.env
 
 export const searchGithub = (term: string, query: string, requestPage: number, cancel: any) => {
     return async (dispatch: Dispatch<Action>) => {
@@ -14,7 +14,7 @@ export const searchGithub = (term: string, query: string, requestPage: number, c
         try {
             const { data } = await axios.get(`https://api.github.com/search/${term}`, {
                 headers: {
-                    Authorization: `token ${githubToken}`,
+                    Authorization: `token ${REACT_APP_GITHUB_TOKEN}`,
                 },
                 cancelToken: cancel,
                 params: {
@@ -49,7 +49,7 @@ export const searchGithubScroll = (term: string, query: string, requestPage: num
         try {
             const { data } = await axios.get(`https://api.github.com/search/${term}`, {
                 headers: {
-                    Authorization: `token ${githubToken}`,
+                    Authorization: `token ${REACT_APP_GITHUB_TOKEN}`,
                 },
                 params: {
                     q: query,
